@@ -9,7 +9,7 @@ const utils = require('../../db/utils.js');
 let jobID = 0;
 
 module.exports.home = (req, res) => {
-  res.send('Welcome! Please submit your URL using: " curl -d "url=www.example.com" http://localhost:3000/submit "')
+  res.send('Welcome! Please submit your URL in terminal: " curl -d "url=www.example.com" http://localhost:3000/submit "')
 };
 
 module.exports.submit = (req, res) => {

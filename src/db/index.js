@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-// const config = require('../../config/config.js');
+const config = require('../../config/config.js');
 
-mongoose.connect(`mongodb://massdrop:challenge@ds161493.mlab.com:61493/html_fetcher_queue`);
+mongoose.connect(`mongodb://${config.username}:${config.password}@ds161493.mlab.com:61493/html_fetcher_queue`);
 
 let db = mongoose.connection;
 
