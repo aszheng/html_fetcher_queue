@@ -23,7 +23,7 @@ let fetchHTML = function(){
           })
         //If error fetching HTML. Update html with error mesg. Update status as false. Leave in Queue (in case fetch works at leter time) 
           .catch( () => {
-            Url.update( {url:task.url, html: 'Error fetching, please check URL and submit a new ticket', status: false} )
+            Url.update( {url:task.url, html: `Error fetching ${task.url}, please come back later or submit a new URL`, status: false} )
             console.log('Error Fetching: ' + task.url)
           })
       })

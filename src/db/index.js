@@ -1,6 +1,7 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const config = require('../../config/config.js');
 
-mongoose.connect('mongodb://massdrop:challenge@ds161493.mlab.com:61493/html_fetcher_queue');
+mongoose.connect(`mongodb://${config.username}:${config.password}@ds161493.mlab.com:61493/html_fetcher_queue`);
 
 let db = mongoose.connection;
 
@@ -20,11 +21,6 @@ let urlSchema = mongoose.Schema({
   status: {type: Boolean, default: false}
 });
 
-let ticketCounterSchema = mongoose.Schema({
-  id: Number,
-  count: Number
-});
-
 var queueSchema = mongoose.Schema({
   id : Number,
   url : String,
@@ -33,7 +29,6 @@ var queueSchema = mongoose.Schema({
 })
 
 let Url = mongoose.model('Url', urlSchema);
-let TicketCounter = mongoose.model('TicketCounter', ticketCounterSchema);
 let Queue = mongoose.model('Queue', queueSchema);
 
 module.exports = {
