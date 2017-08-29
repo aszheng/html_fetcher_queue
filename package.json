@@ -1,0 +1,19 @@
+{
+  "name": "html_fetcher_queue",
+  "version": "1.0.0",
+  "description": "Job queue whose workers fetch data from a URL and store the results in a database. The job queue should expose a REST API for adding jobs and checking their status / results",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server/index.js",
+    "server-dev": "nodemon src/server/index.js"
+  },
+  "author": "Alan Zheng",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.7",
+    "nodemon": "^1.11.0"
+  }
+}
