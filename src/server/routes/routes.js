@@ -5,7 +5,7 @@ const controller = require('../controller/controller.js')
 
 router.get('/', controller.home)
 
-router.get('/submit', controller.submit)
+router.post('/submit', controller.submit)
 
 router.get('/status', controller.status)
 
