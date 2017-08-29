@@ -1,7 +1,7 @@
 const Url = require('./index.js').Url;
-const TicketCounter = require('./index.js').TicketCounter;
 const Queue = require('./index.js').Queue;
 
+//Helper function to add new task to queue
 Queue.enqueue = (params, cb) => {
   var newJob = new Queue(params);
   newJob.save( (err, result) => {
@@ -10,18 +10,17 @@ Queue.enqueue = (params, cb) => {
 }
 
 //Helper function to fetch all tasks in queue
-Queue.fetchAll = function(callback){
-  Queue.find( {}, function(err, data){
-    callback(err, data)
+Queue.fetchAll = (cb) => {
+  Queue.find( {}, (err, data) => {
+    cb(err, data)
   })
 }
 
-
-Url.update = function(params){
+//Helper function to update Url entry in db with HTML
+Url.update = (params) => {
   Url.findOneAndUpdate(
     {url: params.url},
-    {html: params.html, status: true},
-    function (err, result) {if (err) {throw err};}
+    {html: params.html, status: params.status},
+    (err, result) => {if (err) {throw err};}
   )
-  console.log(params.url, 'UPDATED')
 }

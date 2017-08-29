@@ -5,30 +5,29 @@ const Queue = require('../db/index.js').Queue;
 const utils = require('../db/utils.js');
 
 let fetchHTML = function(){
-  console.log('TEST')
+  console.log('*** Worker Checking ***')
 
-  //get all task in queue 
   Queue
-    .fetchAll( (err, result)=> {
+    //get all task in queue 
+    .fetchAll( (err, result) => {
       result.forEach( (task) => {
-        console.log(task.url)
+        console.log('Fetching: ' + task.url)
 
+        //get and save HTML. Dequeue from Queue once complete  
         axios
           .get(task.url)
-          .then( (results)=>{
-            console.log('axios updating', task.url)
-            Url.update( {url:task.url, html:results.data} )
+          .then( (results) => {
+            Url.update( {url:task.url, html:results.data, status: true} )
             Queue.deleteOne({ url: task.url }, function (err, result) {if (err){throw err}})            
+            console.log('Fetched: ' + task.url)
           })
-
+        //If error fetching HTML. Update html with error mesg. Update status as false. Leave in Queue (in case fetch works at leter time) 
+          .catch( () => {
+            Url.update( {url:task.url, html: 'Error fetching, please check URL and submit a new ticket', status: false} )
+            console.log('Error Fetching: ' + task.url)
+          })
       })
-
-      //for each task
     })
-      //get the HTML
-      //save it DB
-      //dequeue
-
 }
 
 // updates every minute
