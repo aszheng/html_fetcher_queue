@@ -7,6 +7,6 @@ router.get('/', controller.home)
 
 router.post('/submit', controller.submit)
 
-router.get('/status', controller.status)
+router.get('/status/*', controller.status)
 
 module.exports = router
