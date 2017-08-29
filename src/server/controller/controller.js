@@ -28,7 +28,7 @@ module.exports.submit = (req, res) => {
         var newURL = new Url ({url: formattedURL, timeRequested: curTime, html: '', jobID: jobID, status: false});
         newURL.save( (err, result) => {if (err) {throw err}} )
 
-        Queue.add({id: jobID, url: formattedURL, timeRequested: curTime}, (err, result) => {
+        Queue.enqueue({id: jobID, url: formattedURL, timeRequested: curTime}, (err, result) => {
           console.log('URL SUBMITTED - Your Ticket Number is: ' + result.id)
           res.send('URL SUBMITTED - Your Ticket Number is: ' + result.id)       
         })        

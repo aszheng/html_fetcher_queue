@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 
 const routes = require('./routes/routes.js')
 
+//required to run worker in background
+const Cron = require('./worker.js')
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
