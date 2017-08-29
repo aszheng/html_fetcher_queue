@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
 
-var routes = require('./routes/routes.js')
+const routes = require('./routes/routes.js')
+
+var Order = require('../db/index.js');
+
 
 app.use('/', routes)
 

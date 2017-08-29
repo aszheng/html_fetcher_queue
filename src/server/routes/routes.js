@@ -5,12 +5,8 @@ const controller = require('../controller/controller.js')
 
 router.get('/', controller.home)
 
-router.get('/submit', function (req, res) {
-  res.send('submit route')
-})
+router.get('/submit', controller.submit)
 
-router.get('/status', function (req, res) {
-  res.send('status route')
-})
+router.get('/status', controller.status)
 
 module.exports = router

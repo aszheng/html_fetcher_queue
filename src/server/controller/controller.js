@@ -1,3 +1,6 @@
+var Order = require('../../db/index.js');
+
+
 module.exports.home = (req, res) => {
   res.send('Welcome to HTML Fetcher. Please submit your URL to /submit/YOURURL')
 };
