@@ -21,7 +21,7 @@ let urlSchema = mongoose.Schema({
   status: {type: Boolean, default: false}
 });
 
-var queueSchema = mongoose.Schema({
+let queueSchema = mongoose.Schema({
   id : Number,
   url : String,
   timeRequested: Date,

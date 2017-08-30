@@ -23,7 +23,7 @@ module.exports.submit = (req, res) => {
         let curTime = new Date();
         jobID = jobID + 1;
 
-        var newURL = new Url ({url: formattedURL, timeRequested: curTime, html: '', jobID: jobID, status: false});
+        let newURL = new Url ({url: formattedURL, timeRequested: curTime, html: '', jobID: jobID, status: false});
         newURL.save( (err, result) => {if (err) {throw err}} )
 
         Queue.enqueue(
@@ -41,7 +41,6 @@ module.exports.submit = (req, res) => {
         res.send('Your job is not ready yet. Please check again in 1 min')
       }
     })
-
 };
 
 module.exports.status = (req, res) => {

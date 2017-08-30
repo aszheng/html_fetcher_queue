@@ -31,7 +31,7 @@ let fetchHTML = function(){
 }
 
 // updates every minute
-var cron = new CronJob({
+let cron = new CronJob({
   cronTime: '*/1 * * * *',
   onTick: fetchHTML,
   start: true,
